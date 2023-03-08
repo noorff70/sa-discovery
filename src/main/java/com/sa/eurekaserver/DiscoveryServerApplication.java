@@ -2,6 +2,8 @@ package com.sa.eurekaserver;
 
 import java.security.NoSuchAlgorithmException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
@@ -13,9 +15,24 @@ import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl.Eure
 @SpringBootApplication
 @EnableEurekaServer
 public class DiscoveryServerApplication {
+	
+	static Logger logger = LoggerFactory.getLogger(DiscoveryServerApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(DiscoveryServerApplication.class, args);
+		
+		testLogging();
+	}
+	
+	public static void testLogging() {
+		try {
+			logger.debug("A DEBUG Message");
+			logger.info("An INFO Message");
+			logger.warn("A WARN Message");
+			logger.error("An ERROR Message");
+		} catch (Exception e){
+			
+		}
 	}
 /*	
 	@Bean
